@@ -3,3 +3,160 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../imagens/Background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 30px;
+}
+
+.temperatura {
+  width: 480px;
+  height: 480px;
+  background-image: url(../imagens/nuvens.jpg);
+  background-size: cover;
+  border-radius: 10px;
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.nuvens {
+  position: absolute;
+  top: 0;
+  width: 176px;
+  height: 176px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nuvens > .nuvem-tras {
+  position: relative;
+  left: -110px;
+  top: -10px;
+}
+
+.nuvens > .nuvem-frente {
+  position: relative;
+  left: -30px;
+  z-index: 1000;
+}
+
+.local {
+  text-align: right;
+}
+
+.graus-dia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.graus-dia .graus {
+  display: flex;
+}
+
+.graus-dia .graus > h1 {
+  font-size: 4rem;
+}
+
+.graus-dia .graus > span {
+  margin-top: 10px;
+}
+
+.graus-dia > div > .temperatura-max {
+  color: blue;
+}
+
+.graus-dia > div > .temperatura-min {
+  color: red;
+}
+
+.detalhes-dia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detalhes-dia > div {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.5rem;
+  background: rgba(102, 96, 200, 0.6);
+  border-radius: 6px;
+}
+
+.dados {
+  display: flex;
+  flex-direction: column;
+  height: 480px;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.ar-sol {
+  display: flex;
+  align-items: center;
+}
+
+.qualidade-ar {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 277px;
+  height: 244px;
+  background: #6d67d0;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.qualidade-ar > .titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.qualidade-ar > .nivel-ar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.qualidade-ar > .info-ar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sol {
+  width: 277px;
+  height: 244px;
+  background: #6d67d0;
+  border-radius: 10px;
+  margin-left: 24px;
+}
+
+.dados-semana {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 578px;
+  height: 212px;
+  margin-top: 2rem;
+  border-radius: 10px;
+  padding: 40px;
+  background: #6D67D0;
+}
