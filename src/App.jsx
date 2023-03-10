@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import moment from "moment/moment";
-import "moment/locale/pt-br"
+import "moment/locale/pt-br";
 import nuvem1 from "../imagens/path36.png";
 import nuvem2 from "../imagens/path38.png";
 import iconLocal from "../imagens/icon-local.png";
@@ -9,7 +9,8 @@ import iconVento from "../imagens/icon-vento.png";
 import iconUmidade from "../imagens/icon-umidade.png";
 import iconChuva from "../imagens/icon-chuva.png";
 import iconFolha from "../imagens/icon-folha.png";
-
+import iconSol from "../imagens/icon-sol.png";
+import imgSol from "../imagens/sol.png";
 
 const App = () => {
   const [data, setData] = React.useState(null);
@@ -43,7 +44,7 @@ const App = () => {
 
         <section className="local">
           <img src={iconLocal} alt="icone localização" />
-          <p>{data.location.region}</p>
+          <p>{data.location.name}</p>
         </section>
 
         <section className="graus-dia">
@@ -98,55 +99,94 @@ const App = () => {
             </div>
 
             <div className="nivel-ar">
-              <h3 className={data.current.air_quality.o3.toFixed(0) >= 192 ? "boa" : 'ruim' } >{data.current.air_quality.o3.toFixed(0) >= 192 ? "Boa" : 'Ruim' }</h3>
-              <h1 className="numero-qualidade-ar" >{data.current.air_quality.o3.toFixed(0)}</h1>
+              <h3
+                className={
+                  data.current.air_quality.o3.toFixed(0) >= 192 ? "boa" : "ruim"
+                }
+              >
+                {data.current.air_quality.o3.toFixed(0) >= 192 ? "Boa" : "Ruim"}
+              </h3>
+              <h1 className="numero-qualidade-ar">
+                {data.current.air_quality.o3.toFixed(0)}
+              </h1>
             </div>
 
             <div className="info-ar">
               <div>
-                <p className="num-ar">{data.current.air_quality.pm2_5.toFixed(1)}</p>
+                <p className="num-ar">
+                  {data.current.air_quality.pm2_5.toFixed(1)}
+                </p>
                 <p className="elemento">PM2.5</p>
               </div>
 
               <div>
-                <p className="num-ar">{data.current.air_quality.pm10.toFixed(1)}</p>
+                <p className="num-ar">
+                  {data.current.air_quality.pm10.toFixed(1)}
+                </p>
                 <p className="elemento">PM10</p>
               </div>
 
               <div>
-                <p className="num-ar">{data.current.air_quality.so2.toFixed(1)}</p>
+                <p className="num-ar">
+                  {data.current.air_quality.so2.toFixed(1)}
+                </p>
                 <p className="elemento">SO₂</p>
               </div>
 
               <div>
-                <p className="num-ar">{data.current.air_quality.no2.toFixed(1)}</p>
+                <p className="num-ar">
+                  {data.current.air_quality.no2.toFixed(1)}
+                </p>
                 <p className="elemento">NO₂</p>
               </div>
 
               <div>
-                <p className="num-ar">{data.current.air_quality.o3.toFixed(1)}</p>
+                <p className="num-ar">
+                  {data.current.air_quality.o3.toFixed(1)}
+                </p>
                 <p className="elemento">O₃</p>
               </div>
 
               <div>
-                <p className="num-ar">{data.current.air_quality.co.toFixed(1)}</p>
+                <p className="num-ar">
+                  {data.current.air_quality.co.toFixed(1)}
+                </p>
                 <p className="elemento">Co</p>
               </div>
             </div>
           </div>
 
-          <div className="sol"></div>
+          <div className="sol">
+            <div className="horario-sol">
+              <img
+                src={iconSol}
+                alt="icone do Sol"
+              />
+              <p>Horário do sol</p>
+            </div>
+
+            <div className="linha-sol">
+              <span className="linha-1"></span>
+              <span className="linha-2"></span>
+              <span className="linhas-cortadas"></span>
+              <img src={imgSol} alt="Sol" style={{ left: "-5px", top: "-20px" }} />
+            </div>
+            <div className="nascer-por-sol">
+            <p>{data.forecast.forecastday[0].astro.sunrise}</p>
+            <p>{data.forecast.forecastday[0].astro.sunset}</p>
+            </div>
+          </div>
         </section>
 
         <section className="dados-semana">
-        <p className="title">Hoje</p>
-        <p className="title">Amanhã</p>
-        <p className="title">{moment().add(2,'day').format('dddd')}</p>
-          {data.forecast.forecastday.map((item,index)=> (
-            <div key={index} className='dias-semana'>
+          <p className="title">Hoje</p>
+          <p className="title">Amanhã</p>
+          <p className="title">{moment().add(2, "day").format("dddd")}</p>
+          {data.forecast.forecastday.map((item, index) => (
+            <div key={index} className="dias-semana">
               <img src={item.day.condition.icon} />
               <div>
-                <span className="temp-max" >{item.day.maxtemp_c}°</span>
+                <span className="temp-max">{item.day.maxtemp_c}°</span>
                 <span className="temp-min">{item.day.mintemp_c}°</span>
               </div>
             </div>

@@ -215,6 +215,84 @@ body {
   background: #6d67d0;
   border-radius: 10px;
   margin-left: 24px;
+  padding: 1rem;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.sol > .horario-sol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.sol > .horario-sol > img {
+  width: 20px;
+  height: 20px;
+  margin: 0 8px;
+}
+
+.sol > .horario-sol > p {
+  color: #dad8f7;
+  text-align: center;
+}
+
+.sol > .linha-sol {
+  position: relative;
+  left: 14px;
+  top: 148px;
+  width: 216px;
+  height: 0px;
+  border: 1px solid rgba(246, 200, 51, 0.4);
+}
+
+.linha-sol > img {
+  position: absolute;
+  z-index: 1000;
+}
+
+.linha-1 {
+  position: relative;
+  left: -3px;
+  top: -2px;
+  display: block;
+  width: 10px;
+  height: 0px;
+  border: 2px solid #e5bb46;
+  transform: rotate(-90deg);
+  z-index: 100;
+}
+
+.linha-2 {
+  position: relative;
+  left: 207px;
+  top: -6px;
+  display: block;
+  width: 10px;
+  height: 0px;
+  border: 2px solid #e5bb46;
+  transform: rotate(-90deg);
+  z-index: 1000;
+}
+
+.linhas-cortadas {
+  position: absolute;
+  width: 212px;
+  height: 106px;
+  left: 0;
+  top: -105.6px;
+  background-image: url(../imagens/Ellipse\ 2.png);
+  background-size: cover;
+}
+
+.nascer-por-sol {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 400;
+  color: #fff;
 }
 
 .dados-semana {
