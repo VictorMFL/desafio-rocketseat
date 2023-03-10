@@ -1,5 +1,7 @@
 import axios from "axios";
 import React from "react";
+import moment from "moment/moment";
+import "moment/locale/pt-br"
 import nuvem1 from "../imagens/path36.png";
 import nuvem2 from "../imagens/path38.png";
 import iconLocal from "../imagens/icon-local.png";
@@ -7,6 +9,7 @@ import iconVento from "../imagens/icon-vento.png";
 import iconUmidade from "../imagens/icon-umidade.png";
 import iconChuva from "../imagens/icon-chuva.png";
 import iconFolha from "../imagens/icon-folha.png";
+
 
 const App = () => {
   const [data, setData] = React.useState(null);
@@ -112,17 +115,17 @@ const App = () => {
 
               <div>
                 <p className="num-ar">{data.current.air_quality.so2.toFixed(1)}</p>
-                <p className="elemento">SO²</p>
+                <p className="elemento">SO₂</p>
               </div>
 
               <div>
                 <p className="num-ar">{data.current.air_quality.no2.toFixed(1)}</p>
-                <p className="elemento">NO²</p>
+                <p className="elemento">NO₂</p>
               </div>
 
               <div>
                 <p className="num-ar">{data.current.air_quality.o3.toFixed(1)}</p>
-                <p className="elemento">O³</p>
+                <p className="elemento">O₃</p>
               </div>
 
               <div>
@@ -136,47 +139,18 @@ const App = () => {
         </section>
 
         <section className="dados-semana">
-          <div>
-            <p>dado 1</p>
-            <p>Icone</p>
-            <p>32° 24°</p>
-          </div>
-
-          <div>
-            <p>dado 2</p>
-            <p>Icone</p>
-            <p>32° 24°</p>
-          </div>
-
-          <div>
-            <p>dado 3</p>
-            <p>Icone</p>
-            <p>32° 24°</p>
-          </div>
-
-          <div>
-            <p>dado 4</p>
-            <p>Icone</p>
-            <p>32° 24°</p>
-          </div>
-
-          <div>
-            <p>dado 5</p>
-            <p>Icone</p>
-            <p>32° 24°</p>
-          </div>
-
-          <div>
-            <p>dado 6</p>
-            <p>Icone</p>
-            <p>32° 24°</p>
-          </div>
-
-          <div>
-            <p>dado 7</p>
-            <p>Icone</p>
-            <p>32° 24°</p>
-          </div>
+        <p className="title">Hoje</p>
+        <p className="title">Amanhã</p>
+        <p className="title">{moment().add(2,'day').format('dddd')}</p>
+          {data.forecast.forecastday.map((item,index)=> (
+            <div key={index} className='dias-semana'>
+              <img src={item.day.condition.icon} />
+              <div>
+                <span className="temp-max" >{item.day.maxtemp_c}°</span>
+                <span className="temp-min">{item.day.mintemp_c}°</span>
+              </div>
+            </div>
+          ))}
         </section>
       </section>
     </div>
