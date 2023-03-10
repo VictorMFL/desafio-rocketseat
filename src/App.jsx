@@ -2,6 +2,11 @@ import axios from "axios";
 import React from "react";
 import nuvem1 from "../imagens/path36.png";
 import nuvem2 from "../imagens/path38.png";
+import iconLocal from "../imagens/icon-local.png";
+import iconVento from "../imagens/icon-vento.png";
+import iconUmidade from "../imagens/icon-umidade.png";
+import iconChuva from "../imagens/icon-chuva.png";
+import iconFolha from "../imagens/icon-folha.png";
 
 const App = () => {
   const [data, setData] = React.useState(null);
@@ -20,8 +25,11 @@ const App = () => {
     }
   };
 
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    get();
+  }, []);
 
+  if (data === null) return null;
   return (
     <div className="container">
       <section className="temperatura">
@@ -31,43 +39,48 @@ const App = () => {
         </section>
 
         <section className="local">
-          <p>Rio de Janeiro</p>
+          <img src={iconLocal} alt="icone localização" />
+          <p>{data.location.region}</p>
         </section>
 
         <section className="graus-dia">
           <div className="graus">
-            <h1>18</h1>
+            <h1>{data.current.temp_c}</h1>
             <span>°C</span>
           </div>
 
           <div>
-            <span className="temperatura-max">22° </span>
-            <span className="temperatura-min">16°</span>
+            <span className="temperatura-max">
+              {data.forecast.forecastday[0].day.maxtemp_c}°{" "}
+            </span>
+            <span className="temperatura-min">
+              {data.forecast.forecastday[0].day.mintemp_c}°
+            </span>
           </div>
         </section>
 
         <section className="detalhes-dia">
           <div>
-            <p>Icone</p>
+            <img src={iconVento} alt="icone Vento" />
             <div>
               <p>Vento</p>
-              <p>17 km/h</p>
+              <p>{data.current.wind_mph} km/h</p>
             </div>
           </div>
 
           <div>
-            <p>Icone</p>
+            <img src={iconUmidade} alt="icone Umidade" />
             <div>
               <p>Umidade</p>
-              <p>17 km/h</p>
+              <p>{data.current.humidity} %</p>
             </div>
           </div>
 
           <div>
-            <p>Icone</p>
+            <img src={iconChuva} alt="icone Chuva" />
             <div>
               <p>Chuva</p>
-              <p>17 km/h</p>
+              <p>{data.forecast.forecastday[0].day.daily_chance_of_rain} %</p>
             </div>
           </div>
         </section>
@@ -77,24 +90,44 @@ const App = () => {
         <section className="ar-sol">
           <div className="qualidade-ar">
             <div className="titulo">
-              <p>icone</p>
+              <img src={iconFolha} alt="icone Folha" />
               <p>Qualidade do ar</p>
             </div>
 
             <div className="nivel-ar">
-              <h3>Boa</h3>
-              <h1>21</h1>
+              <h3 className={data.current.air_quality.o3.toFixed(0) >= 192 ? "boa" : 'ruim' } >{data.current.air_quality.o3.toFixed(0) >= 192 ? "Boa" : 'Ruim' }</h3>
+              <h1 className="numero-qualidade-ar" >{data.current.air_quality.o3.toFixed(0)}</h1>
             </div>
 
             <div className="info-ar">
               <div>
-                <p>12</p>
-                <p>PM2,5</p>
+                <p className="num-ar">{data.current.air_quality.pm2_5.toFixed(1)}</p>
+                <p className="elemento">PM2.5</p>
               </div>
 
               <div>
-                <p>34</p>
-                <p>PM2,5</p>
+                <p className="num-ar">{data.current.air_quality.pm10.toFixed(1)}</p>
+                <p className="elemento">PM10</p>
+              </div>
+
+              <div>
+                <p className="num-ar">{data.current.air_quality.so2.toFixed(1)}</p>
+                <p className="elemento">SO²</p>
+              </div>
+
+              <div>
+                <p className="num-ar">{data.current.air_quality.no2.toFixed(1)}</p>
+                <p className="elemento">NO²</p>
+              </div>
+
+              <div>
+                <p className="num-ar">{data.current.air_quality.o3.toFixed(1)}</p>
+                <p className="elemento">O³</p>
+              </div>
+
+              <div>
+                <p className="num-ar">{data.current.air_quality.co.toFixed(1)}</p>
+                <p className="elemento">Co</p>
               </div>
             </div>
           </div>

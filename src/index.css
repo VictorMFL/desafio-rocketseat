@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Lato", "Arial";
 }
 
 body {
@@ -53,7 +56,14 @@ body {
 }
 
 .local {
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #c2bff4;
+}
+
+.local > img {
+  margin: 0 10px;
 }
 
 .graus-dia {
@@ -69,18 +79,20 @@ body {
 
 .graus-dia .graus > h1 {
   font-size: 4rem;
+  color: #fff;
 }
 
 .graus-dia .graus > span {
   margin-top: 10px;
+  color: #dad8f7;
 }
 
 .graus-dia > div > .temperatura-max {
-  color: blue;
+  color: #fff;
 }
 
 .graus-dia > div > .temperatura-min {
-  color: red;
+  color: #c2bff4;
 }
 
 .detalhes-dia {
@@ -96,6 +108,19 @@ body {
   padding: 0.5rem;
   background: rgba(102, 96, 200, 0.6);
   border-radius: 6px;
+}
+
+.detalhes-dia > div > div > p:nth-child(1) {
+  color: #e7e6fb;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.detalhes-dia > div > div > p:nth-child(2) {
+  color: #e7e6fb;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .dados {
@@ -128,6 +153,14 @@ body {
   margin-top: 1rem;
 }
 
+.qualidade-ar > .titulo > img {
+  margin: 0 10px;
+}
+
+.qualidade-ar > .titulo > p {
+  color: #dad8f7;
+}
+
 .qualidade-ar > .nivel-ar {
   display: flex;
   flex-direction: column;
@@ -135,10 +168,45 @@ body {
   justify-content: center;
 }
 
+.nivel-ar > .boa {
+  color: #87ebcd;
+  padding: 0.3rem 0;
+}
+
+.nivel-ar > .ruim {
+  color: #ba2626;
+  padding: 0.3rem 0;
+}
+
+.numero-qualidade-ar {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #e7e6fb;
+}
+
 .qualidade-ar > .info-ar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.qualidade-ar > .info-ar > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.qualidade-ar > .info-ar > div > .num-ar {
+  color: #87ebcd;
+  font-size: 14px;
+}
+
+.qualidade-ar > .info-ar > div > .elemento {
+  font-size: 12px;
+  color: #e7e6fb;
 }
 
 .sol {
@@ -158,5 +226,5 @@ body {
   margin-top: 2rem;
   border-radius: 10px;
   padding: 40px;
-  background: #6D67D0;
+  background: #6d67d0;
 }
