@@ -257,10 +257,10 @@ body {
 .linha-sol > .horario {
   color: #fff;
   font-weight: 700;
-font-size: 14px;
-position: absolute;
-top: -55px;
-left: 85px;
+  font-size: 14px;
+  position: absolute;
+  top: -55px;
+  left: 85px;
 }
 
 .posicao-sol {
@@ -525,7 +525,7 @@ left: 85px;
   height: 106px;
   left: 0;
   top: -105.6px;
-  background-image: url(../imagens/Ellipse\ 2.png);
+  background-image: url(../imagens/linhas.png);
   background-size: cover;
 }
 
