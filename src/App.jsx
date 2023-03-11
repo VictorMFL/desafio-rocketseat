@@ -14,6 +14,27 @@ import imgSol from "../imagens/sol.png";
 
 const App = () => {
   const [data, setData] = React.useState(null);
+  const [moviSol, setMoviSol] = React.useState(null);
+
+  const dataLocal = new Date();
+
+  function checkTime() {
+    const now = new Date();
+    const start = new Date();
+    start.setHours(5);
+    start.setMinutes(50);
+    const end = new Date();
+    end.setHours(18);
+    end.setMinutes(20);
+  
+    if (now >= start && now < end) {
+      setMoviSol(true);
+    } else {
+      setMoviSol(false);
+    }
+  }
+  setInterval(checkTime, 1000); // verificar a cada segundo
+
 
   let cidade = "Rio de Janeiro";
   const get = async () => {
@@ -25,7 +46,7 @@ const App = () => {
       setData(data);
       console.log(data);
     } catch (error) {
-      +console.log(error);
+      console.log(error);
     }
   };
 
@@ -158,10 +179,7 @@ const App = () => {
 
           <div className="sol">
             <div className="horario-sol">
-              <img
-                src={iconSol}
-                alt="icone do Sol"
-              />
+              <img src={iconSol} alt="icone do Sol" />
               <p>Horário do sol</p>
             </div>
 
@@ -169,11 +187,18 @@ const App = () => {
               <span className="linha-1"></span>
               <span className="linha-2"></span>
               <span className="linhas-cortadas"></span>
-              <img src={imgSol} alt="Sol" style={{ left: "-5px", top: "-20px" }} />
+              <div className="horario">
+                <p>{dataLocal.getHours()}: {dataLocal.getMinutes()}</p>
+                </div>
+              <img
+                src={imgSol}
+                alt="Sol"
+                className={moviSol ? "posicao-sol" : "posicao-final-sol"}
+              />
             </div>
             <div className="nascer-por-sol">
-            <p>{data.forecast.forecastday[0].astro.sunrise}</p>
-            <p>{data.forecast.forecastday[0].astro.sunset}</p>
+              <p>{data.forecast.forecastday[0].astro.sunrise}</p>
+              <p>{data.forecast.forecastday[0].astro.sunset}</p>
             </div>
           </div>
         </section>
