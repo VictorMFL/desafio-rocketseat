@@ -14,29 +14,12 @@ import imgSol from "../imagens/sol.png";
 
 const App = () => {
   const [data, setData] = React.useState(null);
-  const [moviSol, setMoviSol] = React.useState(null);
+  const [moviSol, setMoviSol] = React.useState(true);
 
   const dataLocal = new Date();
 
-  function checkTime() {
-    const now = new Date();
-    const start = new Date();
-    start.setHours(5);
-    start.setMinutes(50);
-    const end = new Date();
-    end.setHours(18);
-    end.setMinutes(20);
-  
-    if (now >= start && now < end) {
-      setMoviSol(true);
-    } else {
-      setMoviSol(false);
-    }
-  }
-  setInterval(checkTime, 1000); // verificar a cada segundo
-
-
   let cidade = "Rio de Janeiro";
+
   const get = async () => {
     try {
       const response = await axios.get(
@@ -188,12 +171,43 @@ const App = () => {
               <span className="linha-2"></span>
               <span className="linhas-cortadas"></span>
               <div className="horario">
-                <p>{dataLocal.getHours()}: {dataLocal.getMinutes()}</p>
-                </div>
+                <p>
+                  {dataLocal.getHours()}: {dataLocal.getMinutes()}
+                </p>
+              </div>
               <img
                 src={imgSol}
                 alt="Sol"
-                className={moviSol ? "posicao-sol" : "posicao-final-sol"}
+                className="posicao-sol"
+                style={
+                  dataLocal.getHours() === 6
+                    ? { left: "-3px", top: "-25px" }
+                    : dataLocal.getHours() === 7
+                    ? { left: "4px", top: "-50px" }
+                    : dataLocal.getHours() === 8
+                    ? { left: "10px", top: "-60px" }
+                    : dataLocal.getHours() === 9
+                    ? { left: "34px", top: "-87px" }
+                    : dataLocal.getHours() === 10
+                    ? { left: "59px", top: "-102px" }
+                    : dataLocal.getHours() === 11
+                    ? { left: "80px", top: "-108px" }
+                    : dataLocal.getHours() === 12
+                    ? { left: "100px", top: "-111px" }
+                    : dataLocal.getHours() === 13
+                    ? { left: "120px", top: "-108px" }
+                    : dataLocal.getHours() === 14
+                    ? { left: "140px", top: "-102px" }
+                    : dataLocal.getHours() === 15
+                    ? { left: "160px", top: "-89px" }
+                    : dataLocal.getHours() === 16
+                    ? { left: "181px", top: "-68px" }
+                    : dataLocal.getHours() === 17
+                    ? { left: "196px", top: "-43px" }
+                    : dataLocal.getHours() >= 18
+                    ? { left: "203px", top: "-17px" }
+                    : ""
+                }
               />
             </div>
             <div className="nascer-por-sol">
