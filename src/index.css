@@ -106,10 +106,14 @@ body {
 .detalhes-dia > div {
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 1fr;
   padding: 0.5rem;
   background: rgba(102, 96, 200, 0.6);
   border-radius: 6px;
+}
+
+.detalhes-dia > div > img {
+  margin: 0 10px;
 }
 
 .detalhes-dia > div > div > p:nth-child(1) {
