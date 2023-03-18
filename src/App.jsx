@@ -14,7 +14,6 @@ import imgSol from "../imagens/sol.png";
 
 const App = () => {
   const [data, setData] = React.useState(null);
-  const [moviSol, setMoviSol] = React.useState(true);
 
   const dataLocal = new Date();
 
@@ -172,7 +171,9 @@ const App = () => {
               <span className="linhas-cortadas"></span>
               <div className="horario">
                 <p>
-                  {dataLocal.getHours()}: {dataLocal.getMinutes()}
+                  {dataLocal.getHours()}:
+                  {dataLocal.getMinutes().toString().padStart(2, "0")}
+                  {/*Adiciona um zero à esquerda se o número tiver apenas um dígito */}
                 </p>
               </div>
               <img
